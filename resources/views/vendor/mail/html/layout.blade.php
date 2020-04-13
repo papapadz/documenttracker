@@ -6,6 +6,10 @@
 </head>
 <body>
 <style>
+.header {
+    background-color: green;
+}
+
 @media only screen and (max-width: 600px) {
 .inner-body {
 width: 100% !important;
@@ -23,16 +27,16 @@ width: 100% !important;
 }
 </style>
 
-<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<table class="wrapper" width="100%"  role="presentation">
 <tr>
 <td align="center">
-<table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<table class="content" width="100%" role="presentation">
 {{ $header ?? '' }}
 
 <!-- Email Body -->
 <tr>
-<td class="body" width="100%" cellpadding="0" cellspacing="0">
-<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+<td class="body" width="100%" >
+<table class="inner-body" align="center" role="presentation">
 
 <!-- Body content -->
 <tr>

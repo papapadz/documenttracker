@@ -1,10 +1,11 @@
 @component('mail::layout')
 {{-- Header --}}
-{{-- @slot('header')
-@component('mail::header', ['url' => config('app.url')])
-{{ config('app.name') }}
+@slot('header')
+@component('mail::header')
+    {{-- {{ config('app.name') }} --}}
+    <img src="http://mmmhmc.doh.gov.ph/images/Headerwhite3.png" alt="{{config('app.name')}}">
 @endcomponent
-@endslot --}}
+@endslot
 
 {{-- Body --}}
 {{ $slot }}

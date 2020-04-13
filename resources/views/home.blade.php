@@ -15,7 +15,11 @@
                     @endif
 
                     <form method="POST" class="row" action="{{ url('send-email') }}" >
-                    @csrf()
+                        @csrf()
+                        <select class="multiple-select form-control" name="contacts[]" multiple="multiple" >
+                                <option value="AL">Alabama</option>
+                                <option value="WY">Wyoming</option>
+                        </select>
                         <input type="text" class="form-control" name="email" />
                         <button type="submit" class="btn btn-success">Send</button>
                     </form>
@@ -24,4 +28,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('.multiple-select').select2({
+        width:100
+    });
+});
+</script>
 @endsection

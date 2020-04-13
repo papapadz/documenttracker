@@ -1,17 +1,16 @@
-@component('mail::message')
-
+@component('mail::message', ['info' => $info])
 {{ Carbon\Carbon::now()->toFormattedDateString() }} <br>
 
 Dear Ma'am/Sir: <br>
 
-Good day! <br>
+Good day! {{ $info }}<br>
     
-We respectfully forward to your good office a copy of the following communcation/correspondence for your information and/or appropriate action. <br>
+We respectfully forward to your good office a copy of the following communication/correspondence <i>(see attached file)</i> for your information and/or appropriate action. <br>
 
 @component('mail::table')
     <table>
     <tr>
-        <td colspan="2"><b>Communication/Correspondce Details</b></td>
+        <td colspan="2"><center><b>Communication/Correspondce Details</b></center></td>
     </tr>
     <tr>
         <td><b>Type of Communication</b></td>
@@ -34,8 +33,12 @@ We respectfully forward to your good office a copy of the following communcation
         <td>Medical Center Chief</td>
     </tr>
     </table>
-@endcomponent
-<br>
+
+Thank you and <b>kindly acknowledge upon receipt</b><br>
+
 Best regards,<br>
+
 <b>OMCC Secretariat</b>
+@endcomponent
+
 @endcomponent
