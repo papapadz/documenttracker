@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Documents;
 
 class EmailSent extends Mailable
 {
@@ -17,11 +18,11 @@ class EmailSent extends Mailable
      * @return void
      */
 
-    public $info;
+    public $document;
 
-    public function __construct($info)
+    public function __construct(Documents $document)
     {
-        $this->info = $info['name'];
+        $this->document = $document;
     }
 
     /**
@@ -32,8 +33,9 @@ class EmailSent extends Mailable
     public function build()
     {   
         return $this->markdown('emails.sent')
-                    ->attach(public_path('uploads/TARF.pdf'), [
-                        'as' => 'sample.pdf',
+                    ->subject($this->document->docType->doc_type.' '.$this->document->no.' ('.$this->document->subject.')')
+                    ->attach(public_path('uploads/'.$this->document->filename), [
+                        'as' => $this->document->control_no.'.pdf',
                         'mime' => 'application/pdf',
                 ]);
     }
